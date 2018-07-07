@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
-using AdventureWorks.Dal.Purchasing;
 using AdventureWorks.Repository.Purchasing.Models;
 using UnitTests.Core;
 

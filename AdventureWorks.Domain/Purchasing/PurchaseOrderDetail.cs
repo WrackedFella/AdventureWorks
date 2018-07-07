@@ -1,16 +1,13 @@
 ﻿using System;
 using AdventureWorks.Core;
+using AdventureWorks.Domain.Production;
 
-namespace AdventureWorks.Repository.Purchasing.Models
+namespace AdventureWorks.Domain.Purchasing
 {
-	public class PurchaseOrderDetailModel : ModelBase
+	public class PurchaseOrderDetail : EntityBase
 	{
-		public int PurchaseOrderDetailId
-		{
-			get => this.Id;
-			set => this.Id = value;
-		}
-
+		public int PurchaseOrderId { get; set; }
+		public int PurchaseOrderDetailId { get; set; }
 		public DateTime DueDate { get; set; }
 		public short OrderQty { get; set; }
 		public int ProductId { get; set; }
@@ -20,6 +17,7 @@ namespace AdventureWorks.Repository.Purchasing.Models
 		public decimal RejectedQty { get; set; }
 		public decimal StockedQty { get; set; }
 
-		public string ProductDisplayName { get; set; }
+		public virtual Product Product { get; set; }
+		public virtual PurchaseOrderHeader PurchaseOrder { get; set; }
 	}
 }

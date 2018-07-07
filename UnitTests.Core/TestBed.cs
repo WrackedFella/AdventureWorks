@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Dal;
+﻿using AdventureWorks.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

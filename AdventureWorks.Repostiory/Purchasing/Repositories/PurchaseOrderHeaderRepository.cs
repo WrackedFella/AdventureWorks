@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AdventureWorks.Core;
-using AdventureWorks.Dal.Purchasing;
+﻿using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Repository.Purchasing.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;

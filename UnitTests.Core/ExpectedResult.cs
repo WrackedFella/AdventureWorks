@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace UnitTests.Core
 {
-
 	public class ExpectedResult
 	{
 		public ExpectedResult(params KeyValuePair<string, int>[] expected)

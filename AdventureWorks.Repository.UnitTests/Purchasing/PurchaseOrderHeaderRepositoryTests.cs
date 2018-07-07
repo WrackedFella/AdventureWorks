@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AdventureWorks.Dal;
-using AdventureWorks.Dal.Purchasing;
+﻿using AdventureWorks.Domain;
+using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Repository.Purchasing.Repositories;
 using UnitTests.Core;
 using Xunit;
