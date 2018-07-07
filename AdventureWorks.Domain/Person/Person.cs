@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using AdventureWorks.Core;
 using AdventureWorks.Domain.HumanResources;
 using AdventureWorks.Domain.Sales;
@@ -8,6 +10,8 @@ namespace AdventureWorks.Domain.Person
 {
 	public class Person : EntityBase
 	{
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int BusinessEntityId { get; set; }
 		public string PersonType { get; set; }
 		public bool NameStyle { get; set; }

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using AdventureWorks.Core;
 using AdventureWorks.Domain.Person;
 
@@ -6,6 +8,8 @@ namespace AdventureWorks.Domain.Purchasing
 {
 	public class Vendor : EntityBase
 	{
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int BusinessEntityId { get; set; }
 		public string AccountNumber { get; set; }
 		public string Name { get; set; }

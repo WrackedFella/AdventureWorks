@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using AdventureWorks.Core;
 using AdventureWorks.Domain.Person;
 
@@ -7,6 +9,8 @@ namespace AdventureWorks.Domain.Sales
 {
 	public class Store : EntityBase
 	{
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int BusinessEntityId { get; set; }
 		public string Name { get; set; }
 		public int? SalesPersonId { get; set; }

@@ -19,7 +19,6 @@ namespace AdventureWorks.Repository.UnitTests.Purchasing
 			EmployeeId = 1,
 			Vendor = new Vendor
 			{
-				VendorId = 1,
 				Name = "Initech, Inc"
 			},
 			ShipMethodId = 1,
