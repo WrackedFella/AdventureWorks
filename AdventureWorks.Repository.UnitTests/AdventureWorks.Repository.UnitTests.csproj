@@ -13,4 +13,9 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureWorks.Repostiory\AdventureWorks.Repository.csproj" />
+    <ProjectReference Include="..\UnitTests.Core\UnitTests.Core.csproj" />
+  </ItemGroup>
+
 </Project>

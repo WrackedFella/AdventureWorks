@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace UnitTests.Core
 {
-	public abstract class MockDbContext
+	public abstract class TestBed
 	{
 		protected virtual AdventureWorksContext GenerateContext()
 		{
