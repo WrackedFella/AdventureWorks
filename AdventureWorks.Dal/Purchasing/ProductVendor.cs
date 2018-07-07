@@ -1,9 +1,10 @@
-﻿using AdventureWorks.Dal.Production;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Production;
 using System;
 
 namespace AdventureWorks.Dal.Purchasing
 {
-	public partial class ProductVendor
+	public class ProductVendor : EntityBase
 	{
 		public int ProductId { get; set; }
 		public int BusinessEntityId { get; set; }
@@ -15,7 +16,6 @@ namespace AdventureWorks.Dal.Purchasing
 		public int MaxOrderQty { get; set; }
 		public int? OnOrderQty { get; set; }
 		public string UnitMeasureCode { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Vendor BusinessEntity { get; set; }
 		public virtual Product Product { get; set; }

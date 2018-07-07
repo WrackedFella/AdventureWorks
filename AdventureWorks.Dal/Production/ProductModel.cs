@@ -1,16 +1,16 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class ProductModel
+	public class ProductModel : EntityBase
 	{
 		public int ProductModelId { get; set; }
 		public string Name { get; set; }
 		public string CatalogDescription { get; set; }
 		public string Instructions { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual ICollection<Product> Product { get; set; } = new HashSet<Product>();
 		public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; } = new HashSet<ProductModelIllustration>();

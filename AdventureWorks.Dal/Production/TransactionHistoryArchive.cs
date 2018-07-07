@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class TransactionHistoryArchive
+	public class TransactionHistoryArchive : EntityBase
 	{
 		public int TransactionId { get; set; }
 		public int ProductId { get; set; }
@@ -12,6 +13,5 @@ namespace AdventureWorks.Dal.Production
 		public string TransactionType { get; set; }
 		public int Quantity { get; set; }
 		public decimal ActualCost { get; set; }
-		public DateTime ModifiedDate { get; set; }
 	}
 }

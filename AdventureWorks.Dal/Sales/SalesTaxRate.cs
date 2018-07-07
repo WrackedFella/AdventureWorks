@@ -1,9 +1,10 @@
-﻿using AdventureWorks.Dal.Person;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Person;
 using System;
 
 namespace AdventureWorks.Dal.Sales
 {
-	public partial class SalesTaxRate
+	public class SalesTaxRate : EntityBase
 	{
 		public int SalesTaxRateId { get; set; }
 		public int StateProvinceId { get; set; }
@@ -11,7 +12,6 @@ namespace AdventureWorks.Dal.Sales
 		public decimal TaxRate { get; set; }
 		public string Name { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual StateProvince StateProvince { get; set; }
 	}

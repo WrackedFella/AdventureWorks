@@ -1,13 +1,12 @@
-﻿using System;
+﻿using AdventureWorks.Core;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class Illustration
+	public class Illustration : EntityBase
 	{
 		public int IllustrationId { get; set; }
 		public string Diagram { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; } = new HashSet<ProductModelIllustration>();
 	}

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class BillOfMaterials
+	public class BillOfMaterials : EntityBase
 	{
 		public int BillOfMaterialsId { get; set; }
 		public int? ProductAssemblyId { get; set; }
@@ -12,7 +13,6 @@ namespace AdventureWorks.Dal.Production
 		public string UnitMeasureCode { get; set; }
 		public short Bomlevel { get; set; }
 		public decimal PerAssemblyQty { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Product Component { get; set; }
 		public virtual Product ProductAssembly { get; set; }

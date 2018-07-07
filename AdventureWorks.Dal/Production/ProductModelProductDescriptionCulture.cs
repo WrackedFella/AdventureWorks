@@ -1,13 +1,12 @@
-﻿using System;
+﻿using AdventureWorks.Core;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class ProductModelProductDescriptionCulture
+	public class ProductModelProductDescriptionCulture : EntityBase
 	{
 		public int ProductModelId { get; set; }
 		public int ProductDescriptionId { get; set; }
 		public string CultureId { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Culture Culture { get; set; }
 		public virtual ProductDescription ProductDescription { get; set; }

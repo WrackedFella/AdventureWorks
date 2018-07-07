@@ -1,10 +1,11 @@
-﻿using AdventureWorks.Dal.Sales;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Sales;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Person
 {
-	public partial class StateProvince
+	public class StateProvince : EntityBase
 	{
 		public int StateProvinceId { get; set; }
 		public string StateProvinceCode { get; set; }
@@ -13,7 +14,6 @@ namespace AdventureWorks.Dal.Person
 		public string Name { get; set; }
 		public int TerritoryId { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
 		public virtual SalesTerritory Territory { get; set; }

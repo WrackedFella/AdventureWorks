@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class ProductReview
+	public class ProductReview : EntityBase
 	{
 		public int ProductReviewId { get; set; }
 		public int ProductId { get; set; }
@@ -11,7 +12,6 @@ namespace AdventureWorks.Dal.Production
 		public string EmailAddress { get; set; }
 		public int Rating { get; set; }
 		public string Comments { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Product Product { get; set; }
 	}

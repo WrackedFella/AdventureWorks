@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class WorkOrder
+	public class WorkOrder : EntityBase
 	{
 		public int WorkOrderId { get; set; }
 		public int ProductId { get; set; }
@@ -14,7 +15,6 @@ namespace AdventureWorks.Dal.Production
 		public DateTime? EndDate { get; set; }
 		public DateTime DueDate { get; set; }
 		public short? ScrapReasonId { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Product Product { get; set; }
 		public virtual ScrapReason ScrapReason { get; set; }

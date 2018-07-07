@@ -1,10 +1,11 @@
-﻿using AdventureWorks.Dal.Sales;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Sales;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Person
 {
-	public partial class Address
+	public class Address : EntityBase
 	{
 		public int AddressId { get; set; }
 		public string AddressLine1 { get; set; }
@@ -13,7 +14,6 @@ namespace AdventureWorks.Dal.Person
 		public int StateProvinceId { get; set; }
 		public string PostalCode { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual StateProvince StateProvince { get; set; }
 		public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; } = new HashSet<BusinessEntityAddress>();

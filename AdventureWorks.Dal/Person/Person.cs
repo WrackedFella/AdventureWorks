@@ -1,11 +1,12 @@
-﻿using AdventureWorks.Dal.HumanResources;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.HumanResources;
 using AdventureWorks.Dal.Sales;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Person
 {
-	public partial class Person
+	public class Person : EntityBase
 	{
 		public int BusinessEntityId { get; set; }
 		public string PersonType { get; set; }
@@ -19,7 +20,6 @@ namespace AdventureWorks.Dal.Person
 		public string AdditionalContactInfo { get; set; }
 		public string Demographics { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual BusinessEntity BusinessEntity { get; set; }
 		public virtual Employee Employee { get; set; }

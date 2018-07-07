@@ -1,11 +1,12 @@
-﻿using AdventureWorks.Dal.Purchasing;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Purchasing;
 using AdventureWorks.Dal.Sales;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.HumanResources
 {
-	public partial class Employee
+	public class Employee : EntityBase
 	{
 		public int BusinessEntityId { get; set; }
 		public string NationalIdnumber { get; set; }
@@ -21,7 +22,6 @@ namespace AdventureWorks.Dal.HumanResources
 		public short SickLeaveHours { get; set; }
 		public bool? CurrentFlag { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Person.Person BusinessEntity { get; set; }
 		public virtual SalesPerson SalesPerson { get; set; }

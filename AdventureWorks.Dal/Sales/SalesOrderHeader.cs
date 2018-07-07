@@ -1,11 +1,12 @@
-﻿using AdventureWorks.Dal.Person;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Person;
 using AdventureWorks.Dal.Purchasing;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Sales
 {
-	public partial class SalesOrderHeader
+	public class SalesOrderHeader : EntityBase
 	{
 		public int SalesOrderId { get; set; }
 		public byte RevisionNumber { get; set; }
@@ -32,7 +33,6 @@ namespace AdventureWorks.Dal.Sales
 		public decimal TotalDue { get; set; }
 		public string Comment { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Address BillToAddress { get; set; }
 		public virtual CreditCard CreditCard { get; set; }

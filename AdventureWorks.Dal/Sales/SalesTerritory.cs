@@ -1,10 +1,11 @@
-﻿using AdventureWorks.Dal.Person;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Person;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Sales
 {
-	public partial class SalesTerritory
+	public class SalesTerritory : EntityBase
 	{
 		public int TerritoryId { get; set; }
 		public string Name { get; set; }
@@ -15,7 +16,6 @@ namespace AdventureWorks.Dal.Sales
 		public decimal CostYtd { get; set; }
 		public decimal CostLastYear { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
 		public virtual ICollection<Customer> Customer { get; set; } = new HashSet<Customer>();

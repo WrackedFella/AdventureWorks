@@ -1,10 +1,11 @@
-﻿using AdventureWorks.Dal.HumanResources;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.HumanResources;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Sales
 {
-	public partial class SalesPerson
+	public class SalesPerson : EntityBase
 	{
 		public int BusinessEntityId { get; set; }
 		public int? TerritoryId { get; set; }
@@ -14,7 +15,6 @@ namespace AdventureWorks.Dal.Sales
 		public decimal SalesYtd { get; set; }
 		public decimal SalesLastYear { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Employee BusinessEntity { get; set; }
 		public virtual SalesTerritory Territory { get; set; }

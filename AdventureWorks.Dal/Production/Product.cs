@@ -1,11 +1,12 @@
-﻿using AdventureWorks.Dal.Purchasing;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Purchasing;
 using AdventureWorks.Dal.Sales;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class Product
+	public class Product : EntityBase
 	{
 		public int ProductId { get; set; }
 		public string Name { get; set; }
@@ -31,7 +32,6 @@ namespace AdventureWorks.Dal.Production
 		public DateTime? SellEndDate { get; set; }
 		public DateTime? DiscontinuedDate { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual ProductModel ProductModel { get; set; }
 		public virtual ProductSubcategory ProductSubcategory { get; set; }

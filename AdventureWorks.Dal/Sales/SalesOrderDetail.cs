@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.Sales
 {
-	public partial class SalesOrderDetail
+	public class SalesOrderDetail : EntityBase
 	{
 		public int SalesOrderId { get; set; }
 		public int SalesOrderDetailId { get; set; }
@@ -14,7 +15,6 @@ namespace AdventureWorks.Dal.Sales
 		public decimal UnitPriceDiscount { get; set; }
 		public decimal LineTotal { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual SalesOrderHeader SalesOrder { get; set; }
 		public virtual SpecialOfferProduct SpecialOfferProduct { get; set; }

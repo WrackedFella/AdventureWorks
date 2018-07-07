@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.dbo
 {
-	public partial class ErrorLog
+	public class ErrorLog : EntityBase
 	{
 		public int ErrorLogId { get; set; }
 		public DateTime ErrorTime { get; set; }

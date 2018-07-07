@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class WorkOrderRouting
+	public class WorkOrderRouting : EntityBase
 	{
 		public int WorkOrderId { get; set; }
 		public int ProductId { get; set; }
@@ -15,7 +16,6 @@ namespace AdventureWorks.Dal.Production
 		public decimal? ActualResourceHrs { get; set; }
 		public decimal PlannedCost { get; set; }
 		public decimal? ActualCost { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Location Location { get; set; }
 		public virtual WorkOrder WorkOrder { get; set; }

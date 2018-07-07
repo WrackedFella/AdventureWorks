@@ -1,9 +1,10 @@
-﻿using AdventureWorks.Dal.Production;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Production;
 using System;
 
 namespace AdventureWorks.Dal.Purchasing
 {
-	public partial class PurchaseOrderDetail
+	public class PurchaseOrderDetail : EntityBase
 	{
 		public int PurchaseOrderId { get; set; }
 		public int PurchaseOrderDetailId { get; set; }
@@ -15,7 +16,6 @@ namespace AdventureWorks.Dal.Purchasing
 		public decimal ReceivedQty { get; set; }
 		public decimal RejectedQty { get; set; }
 		public decimal StockedQty { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Product Product { get; set; }
 		public virtual PurchaseOrderHeader PurchaseOrder { get; set; }

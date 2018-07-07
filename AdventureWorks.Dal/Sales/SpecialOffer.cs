@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Sales
 {
-	public partial class SpecialOffer
+	public class SpecialOffer : EntityBase
 	{
 		public int SpecialOfferId { get; set; }
 		public string Description { get; set; }
@@ -15,7 +16,6 @@ namespace AdventureWorks.Dal.Sales
 		public int MinQty { get; set; }
 		public int? MaxQty { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; } = new HashSet<SpecialOfferProduct>();
 	}

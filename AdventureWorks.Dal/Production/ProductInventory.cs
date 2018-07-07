@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdventureWorks.Core;
+using System;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class ProductInventory
+	public class ProductInventory : EntityBase
 	{
 		public int ProductId { get; set; }
 		public short LocationId { get; set; }
@@ -10,7 +11,6 @@ namespace AdventureWorks.Dal.Production
 		public byte Bin { get; set; }
 		public short Quantity { get; set; }
 		public Guid Rowguid { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Location Location { get; set; }
 		public virtual Product Product { get; set; }

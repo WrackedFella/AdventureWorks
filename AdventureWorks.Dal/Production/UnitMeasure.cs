@@ -1,14 +1,13 @@
-﻿using AdventureWorks.Dal.Purchasing;
-using System;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.Purchasing;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Production
 {
-	public partial class UnitMeasure
+	public class UnitMeasure : EntityBase
 	{
 		public string UnitMeasureCode { get; set; }
 		public string Name { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual ICollection<BillOfMaterials> BillOfMaterials { get; set; } = new HashSet<BillOfMaterials>();
 		public virtual ICollection<Product> ProductSizeUnitMeasureCodeNavigation { get; set; } = new HashSet<Product>();

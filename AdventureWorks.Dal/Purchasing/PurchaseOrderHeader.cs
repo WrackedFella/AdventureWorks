@@ -1,10 +1,11 @@
-﻿using AdventureWorks.Dal.HumanResources;
+﻿using AdventureWorks.Core;
+using AdventureWorks.Dal.HumanResources;
 using System;
 using System.Collections.Generic;
 
 namespace AdventureWorks.Dal.Purchasing
 {
-	public partial class PurchaseOrderHeader
+	public class PurchaseOrderHeader : EntityBase
 	{
 		public int PurchaseOrderId { get; set; }
 		public byte RevisionNumber { get; set; }
@@ -18,7 +19,6 @@ namespace AdventureWorks.Dal.Purchasing
 		public decimal TaxAmt { get; set; }
 		public decimal Freight { get; set; }
 		public decimal TotalDue { get; set; }
-		public DateTime ModifiedDate { get; set; }
 
 		public virtual Employee Employee { get; set; }
 		public virtual ShipMethod ShipMethod { get; set; }
