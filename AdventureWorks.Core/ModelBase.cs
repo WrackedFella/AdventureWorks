@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AdventureWorks.Core
+﻿namespace AdventureWorks.Core
 {
 	public abstract class ModelBase
 	{

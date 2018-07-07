@@ -23,7 +23,7 @@ namespace AdventureWorks.Repository.Purchasing.Models
 		public decimal Freight { get; set; }
 		public decimal TotalDue { get; set; }
 
-		public string EmployeeDisplayName { get; set; }
 		public string VendorDisplayName { get; set; }
+		public string ShipMethodDisplayName { get; set; }
 	}
 }
