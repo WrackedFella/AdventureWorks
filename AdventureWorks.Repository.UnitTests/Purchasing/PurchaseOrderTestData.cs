@@ -17,7 +17,11 @@ namespace AdventureWorks.Repository.UnitTests.Purchasing
 			RevisionNumber = 1,
 			Status = (int)PurchaseOrderStatus.Open,
 			EmployeeId = 1,
-			Vendor = new Vendor(),
+			Vendor = new Vendor
+			{
+				VendorId = 1,
+				Name = "Initech, Inc"
+			},
 			ShipMethodId = 1,
 			OrderDate = new DateTime(2018, 1, 1),
 			ShipDate = new DateTime(2018, 1, 1),

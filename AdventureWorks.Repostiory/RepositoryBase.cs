@@ -51,7 +51,7 @@ namespace AdventureWorks.Repository
 			var entity = Mapper.Map<TEntity>(model);
 			await this.Context.AddAsync(entity);
 			await this.Context.SaveChangesAsync();
-			return await Get(entity.GetId());
+			return await Get(entity.Id);
 		}
 
 		public virtual async Task Delete(int id)

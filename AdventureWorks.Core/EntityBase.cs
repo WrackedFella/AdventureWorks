@@ -6,12 +6,9 @@ namespace AdventureWorks.Core
 {
 	public abstract class EntityBase
 	{
-		protected int Id { get; set; }
-
-		public int GetId()
-		{
-			return this.Id;
-		}
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int Id { get; set; }
 
 		public string ModifiedBy { get; set; }
 		public DateTimeOffset ModifiedDate { get; set; }
