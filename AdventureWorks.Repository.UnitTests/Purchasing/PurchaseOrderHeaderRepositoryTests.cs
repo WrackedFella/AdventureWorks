@@ -5,6 +5,7 @@ using AdventureWorks.Dal;
 using AdventureWorks.Dal.Purchasing;
 using AdventureWorks.Repository.Purchasing.Repositories;
 using UnitTests.Core;
+using Xunit;
 
 namespace AdventureWorks.Repository.UnitTests.Purchasing
 {
@@ -23,7 +24,9 @@ namespace AdventureWorks.Repository.UnitTests.Purchasing
 			return context;
 		}
 
-		public void TestProfileMapping()
+		[Theory]
+		[ClassData(typeof(PurchaseOrderTestData))]
+		public void TestProfileMapping(TestCase testCase)
 		{
 			// Arrange
 			var context = this.BuildContext();
