@@ -1,6 +1,4 @@
-# Onion Architecture Sample over AdventureWorks2016
-
-## Overview
+# Overview
 
 Many projects start with an existing database definition, making best practices difficult to implement. This project is intended to provide code samples, patterns, and practices that can be reused in such projects. Ultimately, I want to reduce the time it takes to pivot legacy or badly designed solutions into something more maintainable in a shorter length of time than rewriting or refactoring from scratch.
 
