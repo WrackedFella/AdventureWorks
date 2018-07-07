@@ -10,7 +10,11 @@ namespace AdventureWorks.Domain.Purchasing
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public int BusinessEntityId { get; set; }
+		public int BusinessEntityId
+		{
+			get => this.Id;
+			set => this.Id = value;
+		}
 		public string AccountNumber { get; set; }
 		public string Name { get; set; }
 		public byte CreditRating { get; set; }

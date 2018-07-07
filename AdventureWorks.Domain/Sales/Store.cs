@@ -11,7 +11,11 @@ namespace AdventureWorks.Domain.Sales
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public int BusinessEntityId { get; set; }
+		public int BusinessEntityId
+		{
+			get => this.Id;
+			set => this.Id = value;
+		}
 		public string Name { get; set; }
 		public int? SalesPersonId { get; set; }
 		public string Demographics { get; set; }

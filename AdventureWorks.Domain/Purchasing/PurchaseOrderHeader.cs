@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using AdventureWorks.Core;
 using AdventureWorks.Domain.HumanResources;
 
@@ -7,7 +9,13 @@ namespace AdventureWorks.Domain.Purchasing
 {
 	public class PurchaseOrderHeader : EntityBase
 	{
-		public int PurchaseOrderId { get; set; }
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int PurchaseOrderId
+		{
+			get => this.Id;
+			set => this.Id = value;
+		}
 		public byte RevisionNumber { get; set; }
 		public byte Status { get; set; }
 		public int EmployeeId { get; set; }
