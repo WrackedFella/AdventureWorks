@@ -1,8 +1,8 @@
 ﻿namespace UnitTests.Core
 {
-	public class TestCase
+	public class TestCase<T>
 	{
-		public ExpectedResult Expected { get; set; }
+		public T Expected { get; set; }
 		public object Data { get; set; }
 	}
 }

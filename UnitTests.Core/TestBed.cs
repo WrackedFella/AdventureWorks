@@ -10,10 +10,12 @@ namespace UnitTests.Core
 		{
 			var serviceProvider = new ServiceCollection()
 				.AddEntityFrameworkInMemoryDatabase()
+				.AddEntityFrameworkProxies()
 				.BuildServiceProvider();
 
 			DbContextOptions<AdventureWorksContext> options = new DbContextOptionsBuilder<AdventureWorksContext>()
-				.UseInMemoryDatabase("MockSmartDb")
+				.UseInMemoryDatabase("MockDb")
+				.UseLazyLoadingProxies()
 				//Without this line, data will persist between tests.
 				// May be desirable, under certain conditions.
 				.UseInternalServiceProvider(serviceProvider)

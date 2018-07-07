@@ -11,9 +11,10 @@ namespace AdventureWorks.Repository.Purchasing.Repositories
 		{
 			Mapper.Initialize(x =>
 			{
-				x.CreateMap<PurchaseOrderHeader, PurchaseOrderHeaderModel>();
-				x.CreateMap<PurchaseOrderHeader, PurchaseOrderHeaderModel>().ReverseMap();
-				x.CreateMap<PurchaseOrderDetail, PurchaseOrderDetailModel>();
+				x.CreateMap<PurchaseOrderHeader, PurchaseOrderHeaderModel>()
+					.ForMember(dest => dest.ShipMethodDisplayName, opt => opt.MapFrom(src => src.ShipMethod.Name))
+					.ForMember(dest => dest.VendorDisplayName, opt => opt.MapFrom(src => src.Vendor.Name));
+				x.CreateMap<PurchaseOrderHeaderModel, PurchaseOrderHeader>();
 				x.CreateMap<PurchaseOrderDetail, PurchaseOrderDetailModel>().ReverseMap();
 			});
 		}

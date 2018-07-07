@@ -21,13 +21,13 @@ namespace AdventureWorks.Repository
 			this.Context = context;
 		}
 
-		public virtual async Task<ModelBase> Get(int id)
+		public virtual async Task<TModel> Get(int id)
 		{
 			var entity = await this.Context.Set<TEntity>().FindAsync(id);
 			return Mapper.Map<TModel>(entity);
 		}
 
-		public virtual async Task<IEnumerable<ModelBase>> Search(Expression<Func<ModelBase, bool>> predicate)
+		public virtual async Task<IEnumerable<TModel>> Search(Expression<Func<TModel, bool>> predicate)
 		{
 			var results = await this.Context.Set<TEntity>()
 				.ProjectTo<TModel>()
@@ -37,7 +37,7 @@ namespace AdventureWorks.Repository
 			return results;
 		}
 
-		public virtual async Task<ModelBase> Update(ModelBase model)
+		public virtual async Task<TModel> Update(TModel model)
 		{
 			var id = model.GetId();
 			var entity = await this.Context.Set<TEntity>().FindAsync(id);
@@ -46,12 +46,12 @@ namespace AdventureWorks.Repository
 			return await Get(id);
 		}
 
-		public virtual async Task<ModelBase> Insert(ModelBase model)
+		public virtual async Task<TModel> Insert(TModel model)
 		{
 			var entity = Mapper.Map<TEntity>(model);
 			await this.Context.AddAsync(entity);
 			await this.Context.SaveChangesAsync();
-			return await Get(entity.Id);
+			return await Get(entity.GetId());
 		}
 
 		public virtual async Task Delete(int id)

@@ -24,5 +24,6 @@ namespace AdventureWorks.Repository.Purchasing.Models
 		public decimal TotalDue { get; set; }
 
 		public string VendorDisplayName { get; set; }
+		public string ShipMethodDisplayName { get; set; }
 	}
 }
