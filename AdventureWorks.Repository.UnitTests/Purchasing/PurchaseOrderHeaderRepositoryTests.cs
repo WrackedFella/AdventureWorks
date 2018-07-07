@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AdventureWorks.Domain;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Repository.Purchasing.Models;
@@ -28,15 +27,11 @@ namespace AdventureWorks.Repository.UnitTests.Purchasing
 		[ClassData(typeof(PurchaseOrderTestData))]
 		public async Task TestProfileMapping(TestCase<PurchaseOrderHeaderModel> testCase)
 		{
-			// Arrange
-			var data = new[] { (PurchaseOrderHeader)testCase.Data };
-			var context = this.BuildContext(data);
+			var context = this.BuildContext(new[] { (PurchaseOrderHeader)testCase.Data });
 			var repo = new PurchaseOrderHeaderRepository(context);
 
-			// Act
 			var testResult = await repo.Get(1);
 
-			// Assert
 			Assert.NotNull(testResult);
 			Assert.Equal(testResult.PurchaseOrderId, testCase.Expected.PurchaseOrderId);
 			Assert.Equal(testResult.RevisionNumber, testCase.Expected.RevisionNumber);
