@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using AdventureWorks.Core;
+using AdventureWorks.Domain.Person;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.HumanResources
 {
-	public class Employee : EntityBase
+	public class Employee : BusinessEntity
 	{
-		public int BusinessEntityId { get; set; }
 		public string NationalIdnumber { get; set; }
 		public string LoginId { get; set; }
 		public short? OrganizationLevel { get; set; }

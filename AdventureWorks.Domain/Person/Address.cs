@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using AdventureWorks.Core;
 using AdventureWorks.Domain.Sales;
 
@@ -7,7 +9,14 @@ namespace AdventureWorks.Domain.Person
 {
 	public class Address : EntityBase
 	{
-		public int AddressId { get; set; }
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int AddressId
+		{
+			get => this.Id;
+			set => this.Id = value;
+		}
+
 		public string AddressLine1 { get; set; }
 		public string AddressLine2 { get; set; }
 		public string City { get; set; }

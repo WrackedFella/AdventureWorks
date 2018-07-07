@@ -6,9 +6,8 @@ using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
 {
-	public class Person : EntityBase
+	public class Person : BusinessEntity
 	{
-		public int BusinessEntityId { get; set; }
 		public string PersonType { get; set; }
 		public bool NameStyle { get; set; }
 		public string Title { get; set; }

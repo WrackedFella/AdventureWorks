@@ -1,10 +1,19 @@
-﻿using AdventureWorks.Core;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using AdventureWorks.Core;
 
 namespace AdventureWorks.Domain.HumanResources
 {
 	public class JobCandidate : EntityBase
 	{
-		public int JobCandidateId { get; set; }
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int JobCandidateId
+		{
+			get => this.Id;
+			set => this.Id = value;
+		}
+
 		public int? BusinessEntityId { get; set; }
 		public string Resume { get; set; }
 
