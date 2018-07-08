@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AdventureWorks.Domain;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Repository.Purchasing.Models;
@@ -29,7 +30,7 @@ namespace AdventureWorks.Services.UnitTests.Purchasing
 			var context = this.BuildContext();
 			var service = new PurchasingService(context);
 
-			var result = await service.CreatePurchaseOrderHeaders(new PurchaseOrderHeaderModel());
+			IEnumerable<PurchaseOrderHeaderModel> result = await service.CreatePurchaseOrderHeaders(new PurchaseOrderHeaderModel());
 
 			Assert.NotNull(result);
 		}

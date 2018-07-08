@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Linq;
 using AdventureWorks.Domain;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Repository.Purchasing.Models;
@@ -23,6 +24,28 @@ namespace AdventureWorks.Repository.UnitTests.Purchasing
 			return context;
 		}
 
+		// ToDo:
+		/*
+		 * Insert Many
+		 * Update Single
+		 * Update Many
+		 * Delete Single
+		 * Delete Many
+		 */
+
+		[Fact]
+		public async Task Insert_GivenNewPurchaseOrderHeaderModel_ReturnsModelWithId()
+		{
+			var context = this.BuildContext();
+			var repo = new PurchaseOrderHeaderRepository(context);
+
+			PurchaseOrderHeaderModel[] result = (await repo.Insert(new PurchaseOrderHeaderModel())).ToArray();
+
+			Assert.NotNull(result);
+			Assert.Single(result);
+			Assert.Equal(1, result[0].PurchaseOrderId);
+		}
+
 		[Theory]
 		[ClassData(typeof(PurchaseOrderTestData))]
 		public async Task TestProfileMapping(TestCase<PurchaseOrderHeaderModel> testCase)
@@ -30,7 +53,7 @@ namespace AdventureWorks.Repository.UnitTests.Purchasing
 			var context = this.BuildContext(new[] { (PurchaseOrderHeader)testCase.Data });
 			var repo = new PurchaseOrderHeaderRepository(context);
 
-			var testResult = await repo.Get(1);
+			var testResult = await repo.FindAsync(1);
 
 			Assert.NotNull(testResult);
 			Assert.Equal(testResult.PurchaseOrderId, testCase.Expected.PurchaseOrderId);

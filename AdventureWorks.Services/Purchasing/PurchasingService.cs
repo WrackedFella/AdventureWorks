@@ -18,7 +18,7 @@ namespace AdventureWorks.Services.Purchasing
 
 		public async Task<IEnumerable<PurchaseOrderHeaderModel>> CreatePurchaseOrderHeaders(params PurchaseOrderHeaderModel[] purchaseOrders)
 		{
-			var results = purchaseOrders.Select(async po => await this._repo.Insert(po));
+			IEnumerable<Task<IEnumerable<PurchaseOrderHeaderModel>>> results = purchaseOrders.Select(async po => await this._repo.Insert(po));
 
 			throw new System.NotImplementedException();
 		}
