@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.Repository
 {
-	public class RepositoryBase<TEntity, TModel>
+	public class RepositoryBase<TEntity, TModel> : IDisposable
 		where TEntity : EntityBase
 		where TModel : ModelBase
 	{
@@ -46,10 +46,10 @@ namespace AdventureWorks.Repository
 			return await Get(id);
 		}
 
-		public virtual async Task<TModel> Insert(TModel model)
+		public virtual async Task<IEnumerable<TModel>> Insert(params TModel[] models)
 		{
-			var entity = Mapper.Map<TEntity>(model);
-			await this.Context.AddAsync(entity);
+			var entities = models.Select(Mapper.Map<TEntity>);
+			await this.Context.AddRangeAsync(entities);
 			await this.Context.SaveChangesAsync();
 			return await Get(entity.GetId());
 		}
@@ -60,6 +60,11 @@ namespace AdventureWorks.Repository
 			this.Context.Set<TEntity>().Remove(entity);
 			this.Context.Remove(entity);
 			await this.Context.SaveChangesAsync();
+		}
+
+		public void Dispose()
+		{
+			this.Context?.Dispose();
 		}
 	}
 }
