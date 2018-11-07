@@ -6,14 +6,25 @@ namespace UnitTests.Core
 {
 	public abstract class TestBed
 	{
-		protected virtual AdventureWorksContext GenerateContext()
+		//protected AutoMapperFixture Fixture;
+
+		//protected TestBed()
+		//{
+		//}
+
+		//protected TestBed(AutoMapperFixture fixture)
+		//{
+		//	this.Fixture = fixture;
+		//}
+
+		protected virtual DbContextOptions<DbContext> GenerateContextOptions()
 		{
 			var serviceProvider = new ServiceCollection()
 				.AddEntityFrameworkInMemoryDatabase()
 				.AddEntityFrameworkProxies()
 				.BuildServiceProvider();
 
-			DbContextOptions<AdventureWorksContext> options = new DbContextOptionsBuilder<AdventureWorksContext>()
+			return new DbContextOptionsBuilder<DbContext>()
 				.UseInMemoryDatabase("MockDb")
 				.UseLazyLoadingProxies()
 				//Without this line, data will persist between tests.
@@ -21,8 +32,6 @@ namespace UnitTests.Core
 				.UseInternalServiceProvider(serviceProvider)
 				.EnableSensitiveDataLogging()
 				.Options;
-
-			return new AdventureWorksContext(options);
 		}
 	}
 }

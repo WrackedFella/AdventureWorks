@@ -13,7 +13,7 @@ namespace AdventureWorks.Services.UnitTests.Purchasing
 	{
 		public AdventureWorksContext BuildContext(params PurchaseOrderHeader[] purchaseOrders)
 		{
-			var context = GenerateContext();
+			var context = new AdventureWorksContext(GenerateContextOptions());
 			if (purchaseOrders.Length == 0)
 			{
 				return context;

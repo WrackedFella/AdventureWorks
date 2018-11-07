@@ -14,12 +14,13 @@ namespace AdventureWorks.Repository
 		where TEntity : EntityBase
 		where TModel : ModelBase
 	{
+		protected readonly DbContext Context;
+		protected IMapper MapperInstance = null;
+		protected IConfigurationProvider MapperConfig;
 		public RepositoryBase(DbContext context)
 		{
 			this.Context = context;
 		}
-
-		protected readonly DbContext Context;
 
 		public virtual async Task Delete(int id)
 		{
@@ -32,7 +33,7 @@ namespace AdventureWorks.Repository
 		public virtual async Task<TModel> FindAsync(int id)
 		{
 			var entity = await this.Context.Set<TEntity>().FindAsync(id);
-			return Mapper.Map<TModel>(entity);
+			return this.MapperInstance.Map<TModel>(entity);
 		}
 
 		public virtual async Task<IEnumerable<TModel>> Insert(params TModel[] models)
@@ -42,16 +43,16 @@ namespace AdventureWorks.Repository
 				throw new NullReferenceException($"An attempt was made to insert null {typeof(TModel)} data.");
 			}
 
-			List<TEntity> entities = models.Select(Mapper.Map<TEntity>).ToList();
+			List<TEntity> entities = models.Select(this.MapperInstance.Map<TEntity>).ToList();
 			await this.Context.AddRangeAsync(entities);
 			await this.Context.SaveChangesAsync();
-			return entities.Select(Mapper.Map<TModel>).AsEnumerable();
+			return entities.Select(this.MapperInstance.Map<TModel>).AsEnumerable();
 		}
 
 		public virtual async Task<IEnumerable<TModel>> Search(Expression<Func<TModel, bool>> predicate)
 		{
 			List<TModel> results = await this.Context.Set<TEntity>()
-				.ProjectTo<TModel>()
+				.ProjectTo<TModel>(this.MapperConfig)
 				.Where(predicate)
 				.ToListAsync();
 
@@ -73,10 +74,11 @@ namespace AdventureWorks.Repository
 			updateTargetList.ForEach(entity =>
 			{
 				var model = models.Single(x => x.GetId() == entity.GetId());
-				Mapper.Map(model, entity);
+				this.MapperInstance.Map(model, entity);
 			});
 			await this.Context.SaveChangesAsync();
-			return updateTargetList.Select(Mapper.Map<TModel>).AsEnumerable();
+			return updateTargetList.Select(this.MapperInstance.Map<TModel>).AsEnumerable();
 		}
+		
 	}
 }
