@@ -14,7 +14,7 @@ namespace AdventureWorks.Domain
 		{
 		}
 
-		public AdventureWorksContext(DbContextOptions<AdventureWorksContext> options)
+		public AdventureWorksContext(DbContextOptions<DbContext> options)
 			: base(options)
 		{
 		}
