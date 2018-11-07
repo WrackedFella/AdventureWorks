@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AdventureWorks.Repository
 {
-	public class RepositoryBase<TEntity, TModel>
+	public class RepositoryBase<TEntity, TModel> : IDisposable
 		where TEntity : EntityBase
 		where TModel : ModelBase
 	{
@@ -79,6 +79,12 @@ namespace AdventureWorks.Repository
 			await this.Context.SaveChangesAsync();
 			return updateTargetList.Select(this.MapperInstance.Map<TModel>).AsEnumerable();
 		}
-		
+
+		public void Dispose()
+		{
+			this.Context?.Dispose();
+			this.MapperInstance = null;
+			this.MapperConfig = null;
+		}
 	}
 }
