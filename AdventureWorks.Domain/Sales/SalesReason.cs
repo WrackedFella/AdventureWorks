@@ -1,14 +1,20 @@
-﻿using System.Collections.Generic;
-using AdventureWorks.Core;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AdventureWorks.Domain.Sales
 {
-	public class SalesReason : EntityBase
-	{
-		public int SalesReasonId { get; set; }
-		public string Name { get; set; }
-		public string ReasonType { get; set; }
+    public class SalesReason
+    {
+        public SalesReason()
+        {
+            SalesOrderHeaderSalesReason = new HashSet<SalesOrderHeaderSalesReason>();
+        }
 
-		public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; } = new HashSet<SalesOrderHeaderSalesReason>();
-	}
+        public int SalesReasonId { get; set; }
+        public string Name { get; set; }
+        public string ReasonType { get; set; }
+        public DateTime ModifiedDate { get; set; }
+
+        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; }
+    }
 }

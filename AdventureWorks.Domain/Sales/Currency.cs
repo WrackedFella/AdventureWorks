@@ -1,15 +1,23 @@
-﻿using System.Collections.Generic;
-using AdventureWorks.Core;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AdventureWorks.Domain.Sales
 {
-	public class Currency : EntityBase
-	{
-		public string CurrencyCode { get; set; }
-		public string Name { get; set; }
+    public class Currency
+    {
+        public Currency()
+        {
+            CountryRegionCurrency = new HashSet<CountryRegionCurrency>();
+            CurrencyRateFromCurrencyCodeNavigation = new HashSet<CurrencyRate>();
+            CurrencyRateToCurrencyCodeNavigation = new HashSet<CurrencyRate>();
+        }
 
-		public virtual ICollection<CountryRegionCurrency> CountryRegionCurrency { get; set; } = new HashSet<CountryRegionCurrency>();
-		public virtual ICollection<CurrencyRate> CurrencyRateFromCurrencyCodeNavigation { get; set; } = new HashSet<CurrencyRate>();
-		public virtual ICollection<CurrencyRate> CurrencyRateToCurrencyCodeNavigation { get; set; } = new HashSet<CurrencyRate>();
-	}
+        public string CurrencyCode { get; set; }
+        public string Name { get; set; }
+        public DateTime ModifiedDate { get; set; }
+
+        public virtual ICollection<CountryRegionCurrency> CountryRegionCurrency { get; set; }
+        public virtual ICollection<CurrencyRate> CurrencyRateFromCurrencyCodeNavigation { get; set; }
+        public virtual ICollection<CurrencyRate> CurrencyRateToCurrencyCodeNavigation { get; set; }
+    }
 }

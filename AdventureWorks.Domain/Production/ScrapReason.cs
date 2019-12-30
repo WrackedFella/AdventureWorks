@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
-using AdventureWorks.Core;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AdventureWorks.Domain.Production
 {
-	public class ScrapReason : EntityBase
-	{
-		public short ScrapReasonId { get; set; }
-		public string Name { get; set; }
+    public class ScrapReason
+    {
+        public ScrapReason()
+        {
+            WorkOrder = new HashSet<WorkOrder>();
+        }
 
-		public virtual ICollection<WorkOrder> WorkOrder { get; set; } = new HashSet<WorkOrder>();
-	}
+        public short ScrapReasonId { get; set; }
+        public string Name { get; set; }
+        public DateTime ModifiedDate { get; set; }
+
+        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
+    }
 }

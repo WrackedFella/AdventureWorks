@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 
 namespace UnitTests.Core
 {
@@ -7,7 +6,6 @@ namespace UnitTests.Core
 	{
 		public void Dispose()
 		{
-			Mapper.Reset();
 		}
 	}
 }

@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
-using AdventureWorks.Core;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Person
 {
-	public class ContactType : EntityBase
-	{
-		public int ContactTypeId { get; set; }
-		public string Name { get; set; }
+    public class ContactType : EntityAuditBase
+    {
+	    [Key]
+        public int ContactTypeId { get; set; }
+        public string Name { get; set; }
 
-		public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; } = new HashSet<BusinessEntityContact>();
-	}
+        public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; } = new HashSet<BusinessEntityContact>();
+    }
 }

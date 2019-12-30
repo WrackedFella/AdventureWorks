@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
-using AdventureWorks.Core;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Person
 {
-	public class PhoneNumberType : EntityBase
-	{
-		public int PhoneNumberTypeId { get; set; }
-		public string Name { get; set; }
+    public class PhoneNumberType : EntityAuditBase
+    {
+	    [Key]
+        public int PhoneNumberTypeId { get; set; }
+        public string Name { get; set; }
 
-		public virtual ICollection<PersonPhone> PersonPhone { get; set; } = new HashSet<PersonPhone>();
-	}
+        public virtual ICollection<PersonPhone> PersonPhone { get; set; } = new HashSet<PersonPhone>();
+    }
 }
