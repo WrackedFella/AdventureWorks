@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Sales
 {
-    public class SpecialOffer
+    public class SpecialOffer  : EntityBase
     {
-        public SpecialOffer()
-        {
-            SpecialOfferProduct = new HashSet<SpecialOfferProduct>();
-        }
-
+	    [Key]
         public int SpecialOfferId { get; set; }
         public string Description { get; set; }
         public decimal DiscountPct { get; set; }
@@ -20,8 +17,7 @@ namespace AdventureWorks.Domain.Sales
         public int MinQty { get; set; }
         public int? MaxQty { get; set; }
         public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
-
-        public virtual ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; }
+        
+        public virtual ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; } = new HashSet<SpecialOfferProduct>();
     }
 }

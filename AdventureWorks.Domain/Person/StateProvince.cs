@@ -5,7 +5,7 @@ using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class StateProvince : EntityAuditBase
+    public class StateProvince : EntityBase
     {
 	    [Key]
         public int StateProvinceId { get; set; }

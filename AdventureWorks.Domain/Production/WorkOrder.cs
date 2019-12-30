@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class WorkOrder
+    public class WorkOrder : EntityBase
     {
-        public WorkOrder()
-        {
-            WorkOrderRouting = new HashSet<WorkOrderRouting>();
-        }
-
+	    [Key]
         public int WorkOrderId { get; set; }
         public int ProductId { get; set; }
         public int OrderQty { get; set; }
@@ -19,10 +16,9 @@ namespace AdventureWorks.Domain.Production
         public DateTime? EndDate { get; set; }
         public DateTime DueDate { get; set; }
         public short? ScrapReasonId { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual ScrapReason ScrapReason { get; set; }
-        public virtual ICollection<WorkOrderRouting> WorkOrderRouting { get; set; }
+        public virtual ICollection<WorkOrderRouting> WorkOrderRouting { get; set; } = new HashSet<WorkOrderRouting>();
     }
 }

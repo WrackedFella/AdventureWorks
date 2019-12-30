@@ -6,7 +6,7 @@ using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class Person : EntityAuditBase
+    public class Person : EntityBase
     {
         [Key]
         public int BusinessEntityId { get; set; }

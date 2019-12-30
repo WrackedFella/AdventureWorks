@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class PhoneNumberType : EntityAuditBase
+    public class PhoneNumberType : EntityBase
     {
 	    [Key]
         public int PhoneNumberTypeId { get; set; }

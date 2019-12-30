@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class TransactionHistoryArchive
+    public class TransactionHistoryArchive : EntityBase
     {
+	    [Key]
         public int TransactionId { get; set; }
         public int ProductId { get; set; }
         public int ReferenceOrderId { get; set; }
@@ -12,6 +14,5 @@ namespace AdventureWorks.Domain.Production
         public string TransactionType { get; set; }
         public int Quantity { get; set; }
         public decimal ActualCost { get; set; }
-        public DateTime ModifiedDate { get; set; }
     }
 }

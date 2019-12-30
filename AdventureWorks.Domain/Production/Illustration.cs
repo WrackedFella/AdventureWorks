@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class Illustration
+    public class Illustration : EntityBase
     {
-        public Illustration()
-        {
-            ProductModelIllustration = new HashSet<ProductModelIllustration>();
-        }
-
+	    [Key]
         public int IllustrationId { get; set; }
         public string Diagram { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; }
+        public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; } = new HashSet<ProductModelIllustration>();
     }
 }

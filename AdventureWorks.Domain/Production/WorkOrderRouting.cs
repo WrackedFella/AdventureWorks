@@ -1,11 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class WorkOrderRouting
+    public class WorkOrderRouting : EntityBase
     {
+        [Key]
         public int WorkOrderId { get; set; }
+        [Key]
         public int ProductId { get; set; }
+        [Key]
         public short OperationSequence { get; set; }
         public short LocationId { get; set; }
         public DateTime ScheduledStartDate { get; set; }
@@ -15,7 +19,6 @@ namespace AdventureWorks.Domain.Production
         public decimal? ActualResourceHrs { get; set; }
         public decimal PlannedCost { get; set; }
         public decimal? ActualCost { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual Location Location { get; set; }
         public virtual WorkOrder WorkOrder { get; set; }

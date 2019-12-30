@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class BusinessEntity : EntityAuditBase
+    public class BusinessEntity : EntityBase
     {
+	    [Key]
         public int BusinessEntityId { get; set; }
         public Guid Rowguid { get; set; }
 

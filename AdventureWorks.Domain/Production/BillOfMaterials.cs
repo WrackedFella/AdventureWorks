@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class BillOfMaterials
+    public class BillOfMaterials : EntityBase
     {
+	    [Key]
         public int BillOfMaterialsId { get; set; }
         public int? ProductAssemblyId { get; set; }
         public int ComponentId { get; set; }
@@ -12,7 +14,6 @@ namespace AdventureWorks.Domain.Production
         public string UnitMeasureCode { get; set; }
         public short Bomlevel { get; set; }
         public decimal PerAssemblyQty { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual Product Component { get; set; }
         public virtual Product ProductAssembly { get; set; }

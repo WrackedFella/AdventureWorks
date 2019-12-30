@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.HumanResources
 {
-    public class Shift : EntityAuditBase
+    public class Shift : EntityBase
     {
 	    [Key]
         public byte ShiftId { get; set; }

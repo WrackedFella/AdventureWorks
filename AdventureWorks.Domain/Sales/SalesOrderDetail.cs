@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Sales
 {
-    public class SalesOrderDetail
+    public class SalesOrderDetail  : EntityBase
     {
+	    [Key]
         public int SalesOrderId { get; set; }
+        [Key]
         public int SalesOrderDetailId { get; set; }
         public string CarrierTrackingNumber { get; set; }
         public short OrderQty { get; set; }
@@ -14,8 +17,7 @@ namespace AdventureWorks.Domain.Sales
         public decimal UnitPriceDiscount { get; set; }
         public decimal LineTotal { get; set; }
         public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
-
+        
         public virtual SalesOrderHeader SalesOrder { get; set; }
         public virtual SpecialOfferProduct SpecialOfferProduct { get; set; }
     }

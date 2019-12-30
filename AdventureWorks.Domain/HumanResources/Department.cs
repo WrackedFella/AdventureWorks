@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.HumanResources
 {
-    public class Department : EntityAuditBase
+    public class Department : EntityBase
     {
         [Key]
         public short DepartmentId { get; set; }

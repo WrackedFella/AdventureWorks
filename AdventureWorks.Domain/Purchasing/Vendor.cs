@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.Person;
 
 namespace AdventureWorks.Domain.Purchasing
 {
-    public class Vendor
+    public class Vendor : EntityBase
     {
-        public Vendor()
-        {
-            ProductVendor = new HashSet<ProductVendor>();
-            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
-        }
-
+	    [Key]
         public int BusinessEntityId { get; set; }
         public string AccountNumber { get; set; }
         public string Name { get; set; }
@@ -22,7 +18,7 @@ namespace AdventureWorks.Domain.Purchasing
         public DateTime ModifiedDate { get; set; }
 
         public virtual BusinessEntity BusinessEntity { get; set; }
-        public virtual ICollection<ProductVendor> ProductVendor { get; set; }
-        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
+        public virtual ICollection<ProductVendor> ProductVendor { get; set; } = new HashSet<ProductVendor>();
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; } = new HashSet<PurchaseOrderHeader>();
     }
 }

@@ -6,7 +6,7 @@ using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.HumanResources
 {
-    public class Employee : EntityAuditBase
+    public class Employee : EntityBase
     {
 	    [Key]
         public int BusinessEntityId { get; set; }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class ContactType : EntityAuditBase
+    public class ContactType : EntityBase
     {
 	    [Key]
         public int ContactTypeId { get; set; }

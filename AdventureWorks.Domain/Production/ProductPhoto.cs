@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class ProductPhoto
+    public class ProductPhoto : EntityBase
     {
-        public ProductPhoto()
-        {
-            ProductProductPhoto = new HashSet<ProductProductPhoto>();
-        }
-
+        [Key]
         public int ProductPhotoId { get; set; }
         public byte[] ThumbNailPhoto { get; set; }
         public string ThumbnailPhotoFileName { get; set; }
         public byte[] LargePhoto { get; set; }
         public string LargePhotoFileName { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<ProductProductPhoto> ProductProductPhoto { get; set; }
+        public virtual ICollection<ProductProductPhoto> ProductProductPhoto { get; set; } = new HashSet<ProductProductPhoto>();
     }
 }

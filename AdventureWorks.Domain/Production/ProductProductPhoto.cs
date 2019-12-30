@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class ProductProductPhoto
+    public class ProductProductPhoto : EntityBase
     {
+	    [Key]
         public int ProductId { get; set; }
+        [Key]
         public int ProductPhotoId { get; set; }
         public bool Primary { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual ProductPhoto ProductPhoto { get; set; }

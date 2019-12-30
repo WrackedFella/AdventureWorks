@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.HumanResources;
 
 namespace AdventureWorks.Domain.Purchasing
 {
-    public class PurchaseOrderHeader
+    public class PurchaseOrderHeader : EntityBase
     {
-        public PurchaseOrderHeader()
-        {
-            PurchaseOrderDetail = new HashSet<PurchaseOrderDetail>();
-        }
-
+	    [Key]
         public int PurchaseOrderId { get; set; }
         public byte RevisionNumber { get; set; }
         public byte Status { get; set; }
@@ -28,6 +25,6 @@ namespace AdventureWorks.Domain.Purchasing
         public virtual Employee Employee { get; set; }
         public virtual ShipMethod ShipMethod { get; set; }
         public virtual Vendor Vendor { get; set; }
-        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; } = new HashSet<PurchaseOrderDetail>();
     }
 }

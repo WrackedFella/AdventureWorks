@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Sales
 {
-    public class SalesReason
+    public class SalesReason  : EntityBase
     {
-        public SalesReason()
-        {
-            SalesOrderHeaderSalesReason = new HashSet<SalesOrderHeaderSalesReason>();
-        }
-
+	    [Key]
         public int SalesReasonId { get; set; }
         public string Name { get; set; }
         public string ReasonType { get; set; }
-        public DateTime ModifiedDate { get; set; }
-
-        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; }
+        
+        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; } = new HashSet<SalesOrderHeaderSalesReason>();
     }
 }

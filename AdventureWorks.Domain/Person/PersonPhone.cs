@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class PersonPhone : EntityAuditBase
+    public class PersonPhone : EntityBase
     {
 	    [Key]
         public int BusinessEntityId { get; set; }

@@ -5,7 +5,7 @@ using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class CountryRegion : EntityAuditBase
+    public class CountryRegion : EntityBase
     {
         [Key]
         public string CountryRegionCode { get; set; }

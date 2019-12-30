@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.Person;
 using AdventureWorks.Domain.Purchasing;
 
 namespace AdventureWorks.Domain.Sales
 {
-    public class SalesOrderHeader
+    public class SalesOrderHeader  : EntityBase
     {
-        public SalesOrderHeader()
-        {
-            SalesOrderDetail = new HashSet<SalesOrderDetail>();
-            SalesOrderHeaderSalesReason = new HashSet<SalesOrderHeaderSalesReason>();
-        }
-
+	    [Key]
         public int SalesOrderId { get; set; }
         public byte RevisionNumber { get; set; }
         public DateTime OrderDate { get; set; }
@@ -38,8 +34,7 @@ namespace AdventureWorks.Domain.Sales
         public decimal TotalDue { get; set; }
         public string Comment { get; set; }
         public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
-
+        
         public virtual Address BillToAddress { get; set; }
         public virtual CreditCard CreditCard { get; set; }
         public virtual CurrencyRate CurrencyRate { get; set; }
@@ -48,7 +43,7 @@ namespace AdventureWorks.Domain.Sales
         public virtual ShipMethod ShipMethod { get; set; }
         public virtual Address ShipToAddress { get; set; }
         public virtual SalesTerritory Territory { get; set; }
-        public virtual ICollection<SalesOrderDetail> SalesOrderDetail { get; set; }
-        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; }
+        public virtual ICollection<SalesOrderDetail> SalesOrderDetail { get; set; } = new HashSet<SalesOrderDetail>();
+        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; } = new HashSet<SalesOrderHeaderSalesReason>();
     }
 }

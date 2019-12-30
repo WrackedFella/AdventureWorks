@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class ScrapReason
+    public class ScrapReason : EntityBase
     {
-        public ScrapReason()
-        {
-            WorkOrder = new HashSet<WorkOrder>();
-        }
-
+	    [Key]
         public short ScrapReasonId { get; set; }
         public string Name { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrder { get; set; } = new HashSet<WorkOrder>();
     }
 }

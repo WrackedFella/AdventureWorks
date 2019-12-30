@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class Address : EntityAuditBase
+    public class Address : EntityBase
     {
+	    [Key]
         public int AddressId { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }

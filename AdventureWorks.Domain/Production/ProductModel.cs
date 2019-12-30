@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class ProductModel
+    public class ProductModel : EntityBase
     {
-        public ProductModel()
-        {
-            Product = new HashSet<Product>();
-            ProductModelIllustration = new HashSet<ProductModelIllustration>();
-            ProductModelProductDescriptionCulture = new HashSet<ProductModelProductDescriptionCulture>();
-        }
-
+        [Key]
         public int ProductModelId { get; set; }
         public string Name { get; set; }
         public string CatalogDescription { get; set; }
         public string Instructions { get; set; }
         public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<Product> Product { get; set; }
-        public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; }
-        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture { get; set; }
+        public virtual ICollection<Product> Product { get; set; } = new HashSet<Product>();
+        public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; } = new HashSet<ProductModelIllustration>();
+        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture { get; set; } = new HashSet<ProductModelProductDescriptionCulture>();
     }
 }

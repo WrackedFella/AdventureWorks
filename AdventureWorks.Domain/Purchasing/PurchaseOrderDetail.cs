@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.Production;
 
 namespace AdventureWorks.Domain.Purchasing
 {
-    public class PurchaseOrderDetail
+    public class PurchaseOrderDetail : EntityBase
     {
+	    [Key]
         public int PurchaseOrderId { get; set; }
+        [Key]
         public int PurchaseOrderDetailId { get; set; }
         public DateTime DueDate { get; set; }
         public short OrderQty { get; set; }

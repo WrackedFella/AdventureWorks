@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Sales
 {
-    public class CreditCard
+    public class CreditCard  : EntityBase
     {
-        public CreditCard()
-        {
-            PersonCreditCard = new HashSet<PersonCreditCard>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
-        }
-
+	    [Key]
         public int CreditCardId { get; set; }
         public string CardType { get; set; }
         public string CardNumber { get; set; }
         public byte ExpMonth { get; set; }
         public short ExpYear { get; set; }
-        public DateTime ModifiedDate { get; set; }
-
-        public virtual ICollection<PersonCreditCard> PersonCreditCard { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        
+        public virtual ICollection<PersonCreditCard> PersonCreditCard { get; set; } = new HashSet<PersonCreditCard>();
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; } = new HashSet<SalesOrderHeader>();
     }
 }

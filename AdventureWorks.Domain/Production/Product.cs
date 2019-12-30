@@ -1,29 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Production
 {
-    public class Product
+    public class Product : EntityBase
     {
-        public Product()
-        {
-            BillOfMaterialsComponent = new HashSet<BillOfMaterials>();
-            BillOfMaterialsProductAssembly = new HashSet<BillOfMaterials>();
-            ProductCostHistory = new HashSet<ProductCostHistory>();
-            ProductInventory = new HashSet<ProductInventory>();
-            ProductListPriceHistory = new HashSet<ProductListPriceHistory>();
-            ProductProductPhoto = new HashSet<ProductProductPhoto>();
-            ProductReview = new HashSet<ProductReview>();
-            ProductVendor = new HashSet<ProductVendor>();
-            PurchaseOrderDetail = new HashSet<PurchaseOrderDetail>();
-            ShoppingCartItem = new HashSet<ShoppingCartItem>();
-            SpecialOfferProduct = new HashSet<SpecialOfferProduct>();
-            TransactionHistory = new HashSet<TransactionHistory>();
-            WorkOrder = new HashSet<WorkOrder>();
-        }
-
+	    [Key]
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string ProductNumber { get; set; }
@@ -48,24 +33,23 @@ namespace AdventureWorks.Domain.Production
         public DateTime? SellEndDate { get; set; }
         public DateTime? DiscontinuedDate { get; set; }
         public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual ProductModel ProductModel { get; set; }
         public virtual ProductSubcategory ProductSubcategory { get; set; }
         public virtual UnitMeasure SizeUnitMeasureCodeNavigation { get; set; }
         public virtual UnitMeasure WeightUnitMeasureCodeNavigation { get; set; }
-        public virtual ICollection<BillOfMaterials> BillOfMaterialsComponent { get; set; }
-        public virtual ICollection<BillOfMaterials> BillOfMaterialsProductAssembly { get; set; }
-        public virtual ICollection<ProductCostHistory> ProductCostHistory { get; set; }
-        public virtual ICollection<ProductInventory> ProductInventory { get; set; }
-        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistory { get; set; }
-        public virtual ICollection<ProductProductPhoto> ProductProductPhoto { get; set; }
-        public virtual ICollection<ProductReview> ProductReview { get; set; }
-        public virtual ICollection<ProductVendor> ProductVendor { get; set; }
-        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
-        public virtual ICollection<ShoppingCartItem> ShoppingCartItem { get; set; }
-        public virtual ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; }
-        public virtual ICollection<TransactionHistory> TransactionHistory { get; set; }
-        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
+        public virtual ICollection<BillOfMaterials> BillOfMaterialsComponent { get; set; } = new HashSet<BillOfMaterials>();
+        public virtual ICollection<BillOfMaterials> BillOfMaterialsProductAssembly { get; set; } = new HashSet<BillOfMaterials>();
+        public virtual ICollection<ProductCostHistory> ProductCostHistory { get; set; } = new HashSet<ProductCostHistory>();
+        public virtual ICollection<ProductInventory> ProductInventory { get; set; } = new HashSet<ProductInventory>();
+        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistory { get; set; } = new HashSet<ProductListPriceHistory>();
+        public virtual ICollection<ProductProductPhoto> ProductProductPhoto { get; set; } = new HashSet<ProductProductPhoto>();
+        public virtual ICollection<ProductReview> ProductReview { get; set; } = new HashSet<ProductReview>();
+        public virtual ICollection<ProductVendor> ProductVendor { get; set; } = new HashSet<ProductVendor>();
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; } = new HashSet<PurchaseOrderDetail>();
+        public virtual ICollection<ShoppingCartItem> ShoppingCartItem { get; set; } = new HashSet<ShoppingCartItem>();
+        public virtual ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; } = new HashSet<SpecialOfferProduct>();
+        public virtual ICollection<TransactionHistory> TransactionHistory { get; set; } = new HashSet<TransactionHistory>();
+        public virtual ICollection<WorkOrder> WorkOrder { get; set; } = new HashSet<WorkOrder>();
     }
 }

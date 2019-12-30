@@ -1,11 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.Domain.Person
 {
-    public class BusinessEntityAddress : EntityAuditBase
+    public class BusinessEntityAddress : EntityBase
     {
+	    [Key]
         public int BusinessEntityId { get; set; }
+        [Key]
         public int AddressId { get; set; }
+        [Key]
         public int AddressTypeId { get; set; }
         public Guid Rowguid { get; set; }
 
