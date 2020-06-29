@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AdventureWorks.Domain.Core;
 
 namespace AdventureWorks.Domain.Production
 {

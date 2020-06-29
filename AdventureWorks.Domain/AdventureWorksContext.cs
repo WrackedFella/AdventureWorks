@@ -2,11 +2,13 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AdventureWorks.Domain.Core;
 using AdventureWorks.Domain.HumanResources;
 using AdventureWorks.Domain.Person;
 using AdventureWorks.Domain.Production;
 using AdventureWorks.Domain.Purchasing;
 using AdventureWorks.Domain.Sales;
+using AdventureWorks.Domain.System;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.Domain
@@ -27,19 +29,19 @@ namespace AdventureWorks.Domain
 		#endregion
 
 		#region Person
-		public virtual DbSet<Address> Address { get; set; }
-		public virtual DbSet<AddressType> AddressType { get; set; }
-		public virtual DbSet<BusinessEntity> BusinessEntity { get; set; }
-		public virtual DbSet<BusinessEntityAddress> BusinessEntityAddress { get; set; }
-		public virtual DbSet<BusinessEntityContact> BusinessEntityContact { get; set; }
-		public virtual DbSet<ContactType> ContactType { get; set; }
-		public virtual DbSet<CountryRegion> CountryRegion { get; set; }
-		public virtual DbSet<EmailAddress> EmailAddress { get; set; }
+		public virtual DbSet<Address> Addresses { get; set; }
+		public virtual DbSet<AddressType> AddressTypes { get; set; }
+		public virtual DbSet<BusinessEntity> BusinessEntities { get; set; }
+		public virtual DbSet<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
+		public virtual DbSet<BusinessEntityContact> BusinessEntityContacts { get; set; }
+		public virtual DbSet<ContactType> ContactTypes { get; set; }
+		public virtual DbSet<CountryRegion> CountryRegions { get; set; }
+		public virtual DbSet<EmailAddress> EmailAddresses { get; set; }
 		public virtual DbSet<Password> Password { get; set; }
-		public virtual DbSet<Person.Person> Person { get; set; }
-		public virtual DbSet<PersonPhone> PersonPhone { get; set; }
-		public virtual DbSet<PhoneNumberType> PhoneNumberType { get; set; }
-		public virtual DbSet<StateProvince> StateProvince { get; set; }
+		public virtual DbSet<Person.Person> Persons { get; set; }
+		public virtual DbSet<PersonPhone> PersonPhones { get; set; }
+		public virtual DbSet<PhoneNumberType> PhoneNumberTypes { get; set; }
+		public virtual DbSet<StateProvince> StateProvinces { get; set; }
 		#endregion
 
 		#region Production
@@ -98,6 +100,10 @@ namespace AdventureWorks.Domain
 		public virtual DbSet<Store> Store { get; set; }
 		#endregion
 
+		#region System
+        public virtual DbSet<AuditHistory> AuditHistory { get; set; }
+		#endregion
+
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
@@ -112,6 +118,12 @@ namespace AdventureWorks.Domain
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+            _ = modelBuilder.EnableAutoHistory<AuditHistory>(o =>
+            {
+                o.LimitChangedLength = false;
+                o.RowIdMaxLength = 4000;
+            });
+
 			foreach (var et in modelBuilder.Model.GetEntityTypes())
 			{
 				var props = et.GetProperties().Where(p => p.IsKey()).ToArray();
@@ -195,6 +207,9 @@ namespace AdventureWorks.Domain
 			modelBuilder.Entity<SalesTerritoryHistory>().HasKey(x => new { x.BusinessEntityId, x.TerritoryId, x.StartDate });
 			modelBuilder.Entity<SpecialOfferProduct>().HasKey(x => new { x.SpecialOfferId, x.ProductId });
 			modelBuilder.Entity<WorkOrderRouting>().HasKey(x => new { x.WorkOrderId, x.ProductId, x.OperationSequence });
+			
+            modelBuilder.Entity<AuditHistory>()
+                .ToTable("AuditHistory", "System");
 		}
 
 		public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -219,18 +234,22 @@ namespace AdventureWorks.Domain
 			SetAuditDetails(modifiedBy);
 			return base.SaveChanges();
 		}
-
-		private void SetAuditDetails(string modifiedBy)
-		{
-			var statesToTrack = new[]
-			{
-				EntityState.Added, EntityState.Modified, EntityState.Deleted
-			};
-			foreach (var dbEntityEntry in this.ChangeTracker.Entries<EntityBase>()
-				.Where(e => statesToTrack.Contains(e.State)))
-			{
-				dbEntityEntry.Entity.SetAuditDetails(modifiedBy);
-			}
-		}
+		
+        private void SetAuditDetails(string modifiedBy)
+        {
+            var statesToTrack = new[]
+            {
+                EntityState.Added, EntityState.Modified, EntityState.Deleted
+            };
+            foreach (var dbEntityEntry in this.ChangeTracker.Entries<EntityBase>()
+                .Where(e => statesToTrack.Contains(e.State)))
+            {
+                dbEntityEntry.Entity.SetAuditDetails(modifiedBy);
+            }
+            this.EnsureAutoHistory(() => new AuditHistory
+            {
+                LastModifiedBy = modifiedBy
+            });
+        }
 	}
 }

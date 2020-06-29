@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AdventureWorks.Domain.Core;
 using AdventureWorks.Domain.Sales;
 
 namespace AdventureWorks.Domain.Person
