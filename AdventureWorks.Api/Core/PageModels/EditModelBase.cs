@@ -50,7 +50,6 @@ namespace AdventureWorks.Api.Core.PageModels
                 return await LoadPageAsync();
             }
 
-            // ToDo: DbConcurrencyError check?
             var updateTarget = await this.Context.Set<TEntity>().FindAsync(id);
             if (updateTarget == null)
             {
