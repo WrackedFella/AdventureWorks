@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AdventureWorks.Domain.Core;
 using AdventureWorks.Domain.Purchasing;
 
 namespace AdventureWorks.Domain.Production

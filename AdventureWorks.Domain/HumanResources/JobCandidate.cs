@@ -1,5 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using AdventureWorks.Domain.Core;
 
 namespace AdventureWorks.Domain.HumanResources
 {
