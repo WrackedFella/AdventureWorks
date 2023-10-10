@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.Domain", "AdventureWorks.Domain\AdventureWorks.Domain.csproj", "{54CCC01E-074C-408E-934F-670376B35043}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Api", "AdventureWorks.Api\AdventureWorks.Api.csproj", "{31E341C5-EB1F-49D9-95D2-70F4FC610160}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
