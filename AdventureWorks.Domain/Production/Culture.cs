@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
-using AdventureWorks.Core;
+using System.ComponentModel.DataAnnotations;
+using AdventureWorks.Domain.Core;
 
 namespace AdventureWorks.Domain.Production
 {
-	public class Culture : EntityBase
-	{
-		public string CultureId { get; set; }
-		public string Name { get; set; }
+    public class Culture : EntityBase
+    {
+	    [Key]
+        public string CultureId { get; set; }
+        public string Name { get; set; }
 
-		public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture { get; set; } = new HashSet<ProductModelProductDescriptionCulture>();
-	}
+        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture { get; set; } = new HashSet<ProductModelProductDescriptionCulture>();
+    }
 }
